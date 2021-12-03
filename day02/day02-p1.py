@@ -1,5 +1,4 @@
 import os
-import re
 import argparse
 import pytest
 
@@ -35,6 +34,7 @@ forward 2
 
 with open(default_file) as f:
     TEST_INPUTS2 = f.read()
+
 
 @pytest.mark.parametrize(
     ('input_s', 'expected'),
