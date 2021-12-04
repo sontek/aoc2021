@@ -6,20 +6,6 @@ here = os.path.dirname(os.path.realpath(__file__))
 default_file = os.path.join(here, "input.txt")
 
 
-def count_bit_on_index(data, index):
-    zero = 0
-    one = 0
-    for i in range(len(data)):
-        if data[i][index] == "0":
-            zero += 1
-        else:
-            one += 1
-    if zero > one:
-        return ("0", "1")
-    else:
-        return ("1", "0")
-
-
 def calculate_winning_combos():
     horizontals = []
     verticals = []
