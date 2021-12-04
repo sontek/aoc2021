@@ -124,7 +124,7 @@ with open(default_file) as f:
     ("input_s", "expected"),
     (
         (TEST_INPUTS1, 1924),
-        (TEST_INPUTS2, 21607),
+        (TEST_INPUTS2, 19012),
     ),
 )
 def test_compute(input_s, expected):
