@@ -29,31 +29,23 @@ def compute(data):
                 for y in range(y1, y2 + 1):
                     line_coords.append((x, y))
         else:
-            min_x = min(startx, endx)
-            min_y = min(starty, endy)
-            max_x = max(startx, endx)
-            max_y = max(starty, endy)
-            # diaganoal
+            slope = (starty - endy) / (startx - endx)
+            # diagonal
             # 8,0 -> 0,8 /    max_x=8, min_x=0, max_y=8, min_y=0
             # 6,4 -> 2,0 \    max_x=6, min_x=2, max_y=4, min_y=0
             # 0,0 -> 8,8 \    max_x=8, min_x=0, max_y=8, min_y=0
             # 5,5 -> 8,2 /    max_x=8, min_x=5, max_y-5, min_y=2
             # /
-            # diagonal from top-left to bottom-right
-            if (min_x == startx and min_y == starty) or (
-                min_x == endx and min_y == endy
-            ):
-                y = min_y - 1
-                for x in range(min_x, max_x + 1):
-                    y += 1
-                    line_coords.append((x, y))
 
-            # diagonal from top-right to bottom-left
-            else:
-                y = max_y + 1
-                for x in range(min_x, max_x + 1):
-                    y -= 1
-                    line_coords.append((x, y))
+            # Flip the starts and ends if the endy is less than the
+            # start.
+            if endy < starty:
+                startx, starty, endx, endy = endx, endy, startx, starty
+
+            while starty <= endy:
+                line_coords.append((startx, starty))
+                startx += slope
+                starty += 1
 
         coords.append(line_coords)
     seen_coords = defaultdict(int)
