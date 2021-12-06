@@ -42,7 +42,7 @@ with open(default_file) as f:
     ("input_s", "expected"),
     (
         (TEST_INPUTS1, 5934),
-        # (TEST_INPUTS2, 393019),
+        (TEST_INPUTS2, 393019),
     ),
 )
 def test_compute(input_s, expected):
